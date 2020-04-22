@@ -1,0 +1,48 @@
+.shop-wrapper {
+    display: flex;
+    margin-top: 20px;
+
+    @media (max-width: 700px) {
+        & {
+            overflow: auto;
+            flex-direction: column;
+        }
+    }
+
+    .side-menu {
+        flex: 1;
+
+        @media (max-width: 700px) {
+            & {
+                display: none;
+            }
+        }
+    }
+
+    .main-content {
+        flex: 4;
+
+        .products-heading {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            align-items: center;
+            margin-bottom: 10px;
+            padding:0  5px;
+
+            .products-heading-title {
+                color: var(--headings);
+
+
+                @media (min-width: 700px) {
+                    & {
+                        display: inline-block;
+                        margin-left: 12px;
+                    }
+                }
+
+
+            }
+        }
+
+    }
+}

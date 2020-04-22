@@ -1,0 +1,24 @@
+docker exec -it shoping-store-mern-docker_server_api_1 sh
+
+docker exec -it shoping-store-mern-docker_server_api_1 sh npm test
+
+docker exec -it shopping-store-mern-stack-docker-nginx_client sh
+
+docker exec -it shoping-store-mern-docker_nginx_1 sh 
+
+docker-compose -f docker-compose.dev.yml up --build --force-recreate
+
+docker-compose -f docker-compose.prod.yml up --build --force-recreate
+
+docker-compose -f docker-compose.prod.yml up --build --f
+orce-recreate --renew-anon-volumes
+
+
+. cleanup-docker.sh
+
+docker-compose -f docker-compose.dev.yml stop server_api
+docker-compose -f docker-compose.dev.yml start server_api
+---------------------------------------------------------------------
+"test:server": "jest --findRelatedTests ./server",
+    "test:client": "jest --findRelatedTests ./client",
+    "test": "jest"

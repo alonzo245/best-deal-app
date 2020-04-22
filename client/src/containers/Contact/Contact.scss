@@ -1,0 +1,83 @@
+.contact-us-wrapper {
+    display: flex;
+    margin-top: 20px;
+
+    .side-menu {
+        flex: 1;
+    }
+
+    .contact-us-main {
+        flex: 4;
+
+
+        &>h1 {
+            margin-bottom: 10px;
+        }
+
+        .contact-us-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-gap: 10px;
+
+            @media (max-width: 500px) {
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-us-left {
+
+                .contact-us-form-wrapper {
+                    background-color: var(--user-settings-box-bg);
+                    padding: 31px;
+                    margin-bottom: 20px;
+
+                    &>form {
+
+                        display: flex;
+                        height: 100%;
+                        width: 100%;
+                        flex-direction: column;
+
+
+                        &>label {
+                            display: block;
+                            padding: 10px;
+                            font-size: 0.7rem;
+                            color: var(--contact-us-label);
+
+                            &>input, textarea {
+                                width: 100%;
+                                display: block;
+                                outline: none;
+                                border: none;
+                                color: var(--auth-submit-btn-text);
+                                border-bottom: 1px solid var(--auth-input-bottom-border);
+                                padding: 10px;
+                                margin-bottom: 10px;
+                                background-color: var(--contact-us-input-bg);
+                                color: var(--auth-input-text);
+                            }
+                        }
+
+                        &>button {
+                            display: block;
+                            outline: none;
+                            border: none;
+                            color: var(--auth-submit-btn-text);
+                            border-bottom: 1px solid var(--auth-input-bottom-border);
+                            padding: 10px;
+                            margin-bottom: 10px;
+                            background-color: var(--auth-input-bg);
+                            color: var(--auth-input-text);
+                            border-bottom: none;
+                            background-color: var(--auth-submit-btn-bg);
+                            color: black;
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}

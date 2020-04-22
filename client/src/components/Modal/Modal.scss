@@ -1,0 +1,73 @@
+.modal-wrapper {
+    // display: none;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    z-index: 22;
+    color: var(--auth-text);
+    outline: 0;
+    margin: auto auto;
+    max-width: 400px;
+    width: 90%;
+    // min-height: 220px;
+    padding: 20px;
+    background-color: var(--auth-bg);
+    transform: translateY(-700px);
+    transition: transform 0.5s ease-in-out;
+
+    &.showModal {
+        // display: block;
+        transform: translateY(20px);
+    }
+
+    & > h4{
+        text-align: center;
+    }
+
+    & > p{
+        text-align: center;
+        margin-top: 20px;   
+        
+    }
+
+    & > .modalBtn{
+        outline: none;
+        border: none;
+        font-size: 0.9rem;
+        margin-top: 20px;
+        color: var(--auth-submit-btn-text);
+        border-bottom: 1px solid var(--auth-input-bottom-border);
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: var(--auth-input-bg);
+        color: var(--auth-input-text);
+        border-bottom: none;
+        background-color: var(--auth-submit-btn-bg);
+        color: black;
+        width: 100%;
+        cursor: pointer;
+    }
+
+}
+
+.backdropModal {
+    transition: transform 1s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 20;
+    outline: 0;
+
+    &.showModal {
+        opacity: 0.4;
+        visibility: visible;
+    }
+
+}

@@ -1,0 +1,82 @@
+.user-settings-wrapper {
+    margin: 20px auto;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 800px;
+
+    @media (max-width: 500px) {
+        padding: 0;
+    }
+
+    .user-settings-main {
+        &>h1 {
+            margin-bottom: 10px;
+            padding: 0 20px;
+        }
+
+            .user-settings-middle {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
+
+                @media (max-width: 700px) {
+                    grid-template-columns: 1fr;
+                }
+
+
+                &>.user-settings-form-wrapper {
+                    
+                    & > div {
+                        background-color: var(--user-settings-box-bg);
+                    padding: 20px;
+                    margin-bottom: 20px;
+
+                    &>form {
+
+                        display: flex;
+                        height: 100%;
+                        width: 100%;
+                        flex-direction: column;
+
+                        &>label {
+                            display: block;
+                            padding: 5px;
+                            font-size: 0.7rem;
+                            color: var(--user-settings-label);
+
+                            &>input {
+                                width: 100%;
+                                display: block;
+                                outline: none;
+                                border: none;
+                                color: var(--auth-submit-btn-text);
+                                border-bottom: 1px solid var(--auth-input-bottom-border);
+                                padding: 5px;
+                                background-color: var(--user-settings-box-bg);
+                                color: var(--auth-input-text);
+                            }
+                        }
+
+                        &>button {
+                            display: block;
+                            outline: none;
+                            border: none;
+                            color: var(--auth-submit-btn-text);
+                            border-bottom: 1px solid var(--auth-input-bottom-border);
+                            padding: 10px;
+                            margin-bottom: 10px;
+                            background-color: var(--auth-input-bg);
+                            color: var(--auth-input-text);
+                            border-bottom: none;
+                            background-color: var(--auth-submit-btn-bg);
+                            color: black;
+                        }
+                    }
+                    }
+                }
+
+
+            }
+        
+    }
+}

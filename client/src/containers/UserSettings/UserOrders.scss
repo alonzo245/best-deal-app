@@ -1,0 +1,117 @@
+.no-orders {
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: var(--no-orders-bg);
+    color: var(--no-orders-text);
+    margin-top: 20px;
+}
+
+.user-orders-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+
+    & > h1 {
+        padding: 0 10px;
+        margin-bottom: 10px;
+    }
+
+    &>.order {
+        transition: height 0.5s ease-in-out;
+        background-color: var(--no-orders-bg);
+        color: var(--no-orders-text);
+        padding: 18px 15px 15px 15px;
+        margin: 10px 0;
+        overflow: hidden;
+        height: 75px;
+
+        &.show {
+            transition: height 0.5s ease-in-out;
+            overflow: none;
+            height: 600px;
+
+        }
+
+        &>li {
+            line-height: 1.7rem;
+            display: flex;
+            justify-content: space-between;
+
+            &.orderInfoAttr{
+                font-size: 0.9rem;
+            }
+
+            &>button {
+                border: none;
+                outline: none;
+                background-color: var(--no-orders-bg);
+                color: var(--no-orders-text);
+                width: 100%;
+                text-align: left;
+                padding: 10px 0;
+                margin-bottom: 30px;
+                align-items: center;
+                height: 20px;
+                display: inline-block;
+
+                &>i {
+                    width: 20px;
+                }
+
+                &>span {
+                    padding-left: 10px;
+                    font-weight: bold;
+                    font-size: 1.3rem;
+                }
+            }
+
+            &>span {
+                display: inline-block;
+            }
+
+
+        }
+
+        &>.order-list {
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            height: 390px;
+            margin: 30px 0;
+
+            &>li {
+                &:first-child {
+                    margin-top: 10px;
+                }
+
+                display: flex;
+                justify-content: start;
+                align-items: top;
+                background-color: var(--no-orders-items-bg);
+                color: var(--no-orders-text);
+                margin-bottom: 10px;
+                padding: 10px;
+
+                & > .order-item-attr {
+                    font-size: 0.9rem;
+                    & > h5 {
+                        font-size: 1.1rem;
+                    }
+                }
+                &>a {
+                    margin-right: 10px;
+
+                    &>img {
+                        width: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

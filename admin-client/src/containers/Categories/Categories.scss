@@ -1,0 +1,41 @@
+.categories-wrapper {
+    margin-top: 50px;
+    max-width: 900px;
+    width: 100%;
+    margin: 50px auto 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    // align-items: top;
+
+    & > .categories-form {
+        padding: 20px;
+    }
+
+    & > .categories-list {
+        padding: 20px;
+
+        & > .list {
+            & > li.addCategory {
+                background-color: orange;
+                color: black;
+
+                &:hover {
+                    background-color: rgba(255, 166, 0, 0.37);
+                }
+            }
+            & > li {
+                cursor: pointer;
+                font-size: 0.7rem;
+                background-color: #444;
+                margin-bottom: 5px;
+                padding: 10px;
+
+                &:hover {
+                    background-color: #222;
+                }
+            }
+        }
+    }
+}

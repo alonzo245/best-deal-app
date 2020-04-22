@@ -1,0 +1,50 @@
+.user-details-form {
+    &>form {
+
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+
+
+        &>label {
+            display: block;
+            padding: 5px;
+            font-size: 0.7rem;
+            color: var(--user-settings-label);
+
+            &>input {
+                width: 100%;
+                display: block;
+                outline: none;
+                border: none;
+                color: var(--auth-submit-btn-text);
+                border-bottom: 1px solid var(--auth-input-bottom-border);
+                padding: 5px;
+                background-color: var(--user-settings-box-bg);
+                color: var(--auth-input-text);
+
+                &:disabled {
+                    // border-bottom: none;
+                    color: rgb(207, 207, 207);
+                    font-style: italic;
+                }
+            }
+        }
+
+        &>button {
+            display: block;
+            outline: none;
+            border: none;
+            color: var(--auth-submit-btn-text);
+            border-bottom: 1px solid var(--auth-input-bottom-border);
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: var(--auth-input-bg);
+            color: var(--auth-input-text);
+            border-bottom: none;
+            background-color: var(--auth-submit-btn-bg);
+            color: black;
+        }
+    }
+}

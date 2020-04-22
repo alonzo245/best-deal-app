@@ -1,0 +1,99 @@
+.mobile-navbar {
+    z-index: 11;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    background: var(--left-mobile-menu-bg);
+    width: 100%;
+
+    transform: translateX(-900px);
+    transition: transform 0.5s ease-in-out;
+    display: none;
+    flex-direction: column;
+    padding: 0 30px;
+    opacity: 0.95;
+    overflow-y: scroll;
+
+    &.show {
+        transform: translateX(0px);
+    }
+
+    @media (max-width: 900px) {
+        display: flex;
+        
+    }
+
+    .navbar-menu-header {
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+
+        .navbar-menu-header-right {
+            justify-content: space-between;
+            align-items: center;
+
+            &>.btn {
+                margin-right: 10px;
+            }
+
+        }
+
+        li:first-child.mobile-navbar-menu-section-title {
+            color: var(--mobile-navbar-menu-section-title);
+            font-weight: bold;
+            font-size: 1.3rem;
+
+        }
+
+    }
+
+    .mobile-navbar-menu-top {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0px;
+        z-index: 10;
+        margin-top: 15px;
+
+
+        li:first-child.mobile-navbar-menu-section-title {
+            color: var(--mobile-navbar-menu-section-title);
+            font-weight: bold;
+            font-size: 1.3rem;
+
+        }
+
+        a {
+            padding-bottom: 2px;
+
+
+            li {
+                padding: 0 10px;
+                font-weight: bold;
+
+                i{
+                    font-size: 0.9rem;
+                    width: 20px;
+                    height: 10px;
+                
+                }
+
+                @media (max-width: 900px) {
+                    & {
+                        padding: 12px 0;
+                        border-bottom: rgb(70, 70, 70) solid 1px;
+                        font-size: 0.9rem;
+                    }
+
+                    >&:last-child {
+                        border-bottom: 0;
+                    }
+                }
+
+            }
+
+        }
+    }
+}

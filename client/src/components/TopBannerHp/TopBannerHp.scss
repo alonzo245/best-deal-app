@@ -1,0 +1,52 @@
+.top-banner-hp-loader {
+    width: 100%;
+    animation-duration: 5.25s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: var(--box-loader-background-gradient);
+    // background-size: 10px 10px;
+    position: relative;
+    
+    
+    
+    @media (min-width: 1000px) {
+        & {
+            height: 350px;
+        }
+    }
+    
+    
+    @media (max-width: 999px) {
+        & {
+            height: 240px;
+        }
+    }
+    
+    
+    @media (max-width: 700px) {
+        & {
+            height: 180px;
+        }
+    }
+    
+
+    @media (max-width: 500px) {
+        & {
+            height: 120px;
+        }
+    }
+    
+    // Animation
+    @keyframes placeHolderShimmer {
+        0% {
+            background-position: 0px 0;
+        }
+
+        100% {
+            background-position: 2000px 0;
+        }
+    }
+    
+}

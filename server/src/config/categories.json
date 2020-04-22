@@ -1,0 +1,105 @@
+[
+    {
+
+        "icon": "fire-alt",
+        "categoryId": "1",
+        "name": "Popular",
+        "route": "popular"
+    }
+
+    ,
+    {
+
+        "icon": "blender",
+        "categoryId": "2",
+        "name": "Appliances",
+        "route": "appliances"
+    }
+
+    ,
+    {
+
+        "icon": "ethernet",
+        "categoryId": "3",
+        "name": "Cables &adapters",
+        "route": "Cables"
+    }
+
+    ,
+    {
+
+        "icon": "microchip",
+        "categoryId": "4",
+        "name": "Gadgets",
+        "route": "gadgets"
+    }
+
+    ,
+    {
+
+        "icon": "camera",
+        "categoryId": "6",
+        "name": "Cameras",
+        "route": "cameras"
+    }
+
+    ,
+    {
+
+        "icon": "mobile-alt",
+        "categoryId": "8",
+        "name": "Cellular",
+        "route": "cellular"
+    }
+
+    ,
+    {
+
+        "icon": "laptop",
+        "categoryId": "9",
+        "name": "Laptops",
+        "route": "laptops"
+    }
+
+    ,
+    {
+
+        "icon": "headphones",
+        "categoryId": "10",
+        "name": "Headphones",
+        "route": "headphones"
+    }
+
+    ,
+    {
+
+        "icon": "tv",
+        "categoryId": "11",
+        "name": "TVs",
+        "route": "smart-tv"
+    }
+
+    ,
+    {
+
+        "icon": "mouse",
+        "categoryId": "12",
+        "name": "Computers",
+        "route": "computers"
+    }
+
+    ,
+    {
+
+        "icon": "home",
+        "categoryId": "13",
+        "name": "Smart Home",
+        "route": "smart-home"
+    },
+    {
+        "icon": "tablet-alt",
+        "categoryId": "14",
+        "name": "Tablets",
+        "route": "tablets"
+    }
+]

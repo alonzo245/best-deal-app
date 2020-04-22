@@ -1,0 +1,50 @@
+.side-menu {
+    padding: 0 10px 0 0;
+    font-size: 0.7rem;
+
+    @media (max-width: 700px) {
+
+        & {
+            display: none;
+        }
+    }
+
+    h4 {
+        border-bottom: none;
+        background-color: var(--filter-side-menu-category-bg);
+        font-weight: bold;
+        padding: 10px 5px;
+        margin-top: 4px;
+        font-size: 0.9rem;
+    }
+
+    ul {
+
+        li {
+            font-size: 0.8rem;
+            padding: 10px;
+            border-bottom: 1px solid var(--filter-side-menu-border);
+            align-items: center;
+            background-color: var(--filter-side-menu-bg);
+            margin-bottom: 5px;
+            
+            &.active,
+            &.active:hover {
+                background-color: var(--filter-side-menu-link-hover-bg);
+                color: white;
+            }
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+
+            i {
+                
+                width: 20px;
+                height: 10px;
+            }
+        }
+
+    }
+}

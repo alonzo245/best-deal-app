@@ -1,0 +1,30 @@
+.admin-header{
+    position: fixed;
+    height: 50px;
+    background-color: black;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    
+    & > nav {
+        // font-size: 0.6rem;
+
+        & > ul {
+            display: flex;
+
+            & > li {
+                padding: 0 5px;
+
+                & > a.active{
+                    // text-decoration: underline;
+                    font-weight: bold;
+                    color: orange;
+                }
+            }
+        }
+    }
+}

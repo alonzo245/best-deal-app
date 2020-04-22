@@ -1,0 +1,125 @@
+version: "3"
+
+services:
+  # NGINX ---------------------------------------------------------------------------- //
+  nginx:
+    container_name: nginx
+    image: nginx:stable
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - server_api
+      - client
+      - admin_client
+      - db
+    links:
+      - server_api
+      - client
+      - admin_client
+      - db
+    ports:
+      - ${NGINX_EXPOSED_PORT_PROD}:${NGINX_INNER_PORT_PROD}
+      # - 443:443
+    # restart: always
+    networks:    
+      - shoppingstorenetwork
+
+  # REDIS ---------------------------------------------------------------------------- //
+  redis:
+    container_name: cache
+    image: redis
+    container_name: cache
+    expose:
+      - ${REDIS_PORT}
+    networks:    
+      - shoppingstorenetwork
+
+
+  # SERVER ---------------------------------------------------------------------------- //
+  server_api:
+    container_name: server_api
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    environment:
+      - REDIS_URL=${REDIS_URL}
+      - MONGO_URI=${MONGO_URI_DEV}
+      - API_PORT=${API_INNER_PORT_DEV}
+      - NODE_ENV=${NODE_ENV_DEV}
+      - JWT_SECRET_TOKEN=${JWT_SECRET_TOKEN}
+      - JWT_REFRESH_TOKEN=${JWT_REFRESH_TOKEN}
+      - SEND_GRID_KEY=${SEND_GRID_KEY}
+    ports:
+      - ${API_EXPOSED_PORT_DEV}:${API_INNER_PORT_DEV}
+    volumes:
+      - ./server/src:/app/server/src
+      - ./server/public:/app/server/public
+      - ./server/logs:/app/server/logs
+    depends_on:
+      - db
+    links:
+      - db
+      - redis
+    # restart: always
+    networks:    
+      - shoppingstorenetwork
+
+  # CLIENT ---------------------------------------------------------------------------- //
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports:
+      - ${REACT_EXPOSED_APP_PORT_DEV}:${REACT_APP_PORT_DEV}
+    environment: 
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./client/src:/app/client/src
+      - ./client/public:/app/client/public
+    links:
+      - server_api
+    depends_on: 
+      - server_api
+      - db
+    # command: npm run start
+    # restart: always
+    networks:
+      - shoppingstorenetwork
+
+  # ADMIN CLIENT ---------------------------------------------------------------------------- //
+  admin_client:
+    container_name: admin_client
+    build:
+      context: ./admin-client
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3001:3001
+    environment: 
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./admin-client/src:/app/client/src
+      - ./admin-client/public:/app/client/public
+    links:
+      - server_api
+    depends_on: 
+      - db
+    # command: npm run start
+    restart: always
+    networks:    
+      - shoppingstorenetwork
+    
+  # MONGODB ---------------------------------------------------------------------------- //
+  db:
+    container_name: db
+    image: mongo:4.0
+    command: mongod --port ${MONGO_INNER_PORT_DEV}
+    ports:
+      - ${MONGO_EXPOSED_PORT_DEV}:${MONGO_INNER_PORT_DEV}
+    restart: always
+    networks:    
+      - shoppingstorenetwork
+
+networks:    
+  shoppingstorenetwork:

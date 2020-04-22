@@ -1,0 +1,59 @@
+.payment-form {
+    &>form {
+
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+
+
+        &> div> label, &>label {
+            display: block;
+            padding: 5px;
+            font-size: 0.8rem;
+            color: var(--user-settings-label);
+
+            &.expMonuth {
+                width: 50%;
+                display: inline-block;
+            }
+
+            &.expYear {
+                width: 50%;
+                display: inline-block;
+            }
+
+            &.cvv {
+                width: 50%;
+            }
+
+            &>input {
+                width: 100%;
+                display: block;
+                outline: none;
+                border: none;
+                color: var(--auth-submit-btn-text);
+                padding: 5px;
+                background-color:var(--payment-form-input-bg);
+                border-bottom: 1px solid var(--payment-form-input-bottom-border);
+                color: var(--auth-input-text);
+
+            }
+        }
+
+        &>button {
+            display: block;
+            outline: none;
+            border: none;
+            color: var(--auth-submit-btn-text);
+            border-bottom: 1px solid var(--auth-input-bottom-border);
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: var(--auth-input-bg);
+            color: var(--auth-input-text);
+            border-bottom: none;
+            background-color: var(--auth-submit-btn-bg);
+            color: black;
+        }
+    }
+}
