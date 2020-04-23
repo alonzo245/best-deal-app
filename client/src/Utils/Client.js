@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 export const client = axios.create({
-  baseURL: '//localhost/api-v1/',
+  baseURL: '/api-v1/',
 });
 
 export const authClient = axios.create({
-  baseURL: '//localhost/auth/',
+  baseURL: '/auth/',
 });
 
 export const authHeaders = user => {

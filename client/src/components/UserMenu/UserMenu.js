@@ -36,7 +36,7 @@ export const UserMenu = () => {
     return (
         <li onClick={handleToggleUserMenu} className="user-nav-badge">
             {activeCustomer.avatar ?
-                <img src={`//localhost/uploads/${activeCustomer.avatar}`} alt="user" />
+                <img src={`/uploads/${activeCustomer.avatar}`} alt="user" />
                 :
                 <i className="menu-btn fas fa-user-cog"></i>
             }
