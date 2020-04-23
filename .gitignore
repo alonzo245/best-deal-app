@@ -1,6 +1,7 @@
 .vscode
 .env
 *.env
+secrets/*
 
 #api
 rest-api

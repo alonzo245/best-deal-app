@@ -16,7 +16,7 @@ services:
       - server_api
       - client
     ports:
-      - ${NGINX_EXPOSED_PORT_PROD}:${NGINX_INNER_PORT_PROD}
+      - 80:80
       # - 443:443
     # restart: always
     networks:    
@@ -26,7 +26,7 @@ services:
   redis:
     image: redis
     container_name: cache
-    expose:
+    ports:
       - ${REDIS_PORT}
     networks:    
       - shoppingstorenetwork
@@ -49,8 +49,8 @@ services:
       - ./server/src:/app/server/src
       - ./server/public:/app/server/public
       - ./server/logs:/app/server/logs
-    # ports: 
-    #   - 3333:5000
+    ports: 
+      - 5000:5000
     depends_on:
       - db
     links:
@@ -68,8 +68,8 @@ services:
     #   - ${REACT_APP_PORT_PROD}:${REACT_APP_PORT_PROD}
     links:
       - server_api
-    # ports: 
-    #   - 3334:4000
+    ports: 
+      - 3334:4000
     depends_on: 
       - server_api
       - db
@@ -83,6 +83,8 @@ services:
     ports:
       - ${MONGO_EXPOSED_PORT_PROD}:${MONGO_INNER_PORT_PROD}
     restart: always
+    ports: 
+      - ${MONGO_INNER_PORT_PROD}
     # environment:
     #   MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
     #   MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
