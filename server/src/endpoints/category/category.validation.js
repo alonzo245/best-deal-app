@@ -6,13 +6,26 @@ const injects = ({ logger, validateResult }) => ({
      * createCategory
      */
     createCategory: [
-        check('email')
-            .not().isEmpty()
-            .isEmail()
+        check('active')
             .trim()
             .escape()
-            .normalizeEmail()
-            .withMessage('Email not valid'),
+            .isString()
+            .withMessage('Category active field not valid'),
+        check('icon')
+            .trim()
+            .escape()
+            .isString()
+            .withMessage('Category icon field not valid'),
+        check('name')
+            .trim()
+            .escape()
+            .isString()
+            .withMessage('Category name field not valid'),
+        check('route')
+            .trim()
+            .escape()
+            .isString()
+            .withMessage('Category route field not valid'),
         (req, res, next) => validateResult(req, res, next, logger)
     ],
 
@@ -20,13 +33,26 @@ const injects = ({ logger, validateResult }) => ({
      * updateCategory
      */
     updateCategory: [
-        check('email')
-            .not().isEmpty()
-            .isEmail()
+        check('active')
             .trim()
             .escape()
-            .normalizeEmail()
-            .withMessage('Email not valid'),
+            .isString()
+            .withMessage('Category active field not valid'),
+        check('icon')
+            .trim()
+            .escape()
+            .isString()
+            .withMessage('Category icon field not valid'),
+        check('name')
+            .trim()
+            .escape()
+            .isString()
+            .withMessage('Category name field not valid'),
+        check('route')
+            .trim()
+            .escape()
+            .isString()
+            .withMessage('Category route field not valid'),
         (req, res, next) => validateResult(req, res, next, logger)
     ],
 

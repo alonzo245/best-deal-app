@@ -1,102 +1,83 @@
 [
     {
-
+        "active": "1",
         "icon": "fire-alt",
         "categoryId": "1",
         "name": "Popular",
         "route": "popular"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "blender",
         "categoryId": "2",
         "name": "Appliances",
         "route": "appliances"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "ethernet",
         "categoryId": "3",
         "name": "Cables &adapters",
         "route": "Cables"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "microchip",
         "categoryId": "4",
         "name": "Gadgets",
         "route": "gadgets"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "camera",
         "categoryId": "6",
         "name": "Cameras",
         "route": "cameras"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "mobile-alt",
         "categoryId": "8",
         "name": "Cellular",
         "route": "cellular"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "laptop",
         "categoryId": "9",
         "name": "Laptops",
         "route": "laptops"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "headphones",
         "categoryId": "10",
         "name": "Headphones",
         "route": "headphones"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "tv",
         "categoryId": "11",
         "name": "TVs",
         "route": "smart-tv"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "mouse",
         "categoryId": "12",
         "name": "Computers",
         "route": "computers"
-    }
-
-    ,
+    },
     {
-
+        "active": "1",
         "icon": "home",
         "categoryId": "13",
         "name": "Smart Home",
         "route": "smart-home"
     },
     {
+        "active": "1",
         "icon": "tablet-alt",
         "categoryId": "14",
         "name": "Tablets",

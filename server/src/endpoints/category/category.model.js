@@ -17,10 +17,13 @@ var category = new Schema({
     route: {
         type: String,
         required: true
+    },
+    active: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
 })
-
 
 module.exports = mongoose.model('Category', category)

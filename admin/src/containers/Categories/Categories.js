@@ -1,22 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import './Categories.scss'
 import { client } from '../../Utils/Client'
+import './Categories.scss'
+import { extractFromData } from '../../Utils/Utils'
 
 
 
 export const Categories = () => {
+    const [method, setMethod] = useState('PATCH')
+
     const [categories, setCategories] = useState(null)
     const [category, setCategory] = useState({
         name: '',
         icon: '',
         categoryId: '',
-        route: ''
+        route: '',
+        active: '',
     })
 
     useEffect(() => {
         fetchData()
-    }, [])
+    }, [method])
 
     const fetchData = async () => {
         try {
@@ -33,6 +37,7 @@ export const Categories = () => {
             ...category,
             [e.target.name]: e.target.value
         })
+
     }
 
     const handleAdd = async e => {
@@ -40,19 +45,37 @@ export const Categories = () => {
             name: '',
             icon: '',
             categoryId: '',
-            route: ''
+            route: '',
+            active: '',
         })
+        setMethod('POST')
+        console.log(method)
     }
 
     const handleEdit = id => {
         const filterCategories = [...categories]
         // console.log(id, filterCategories.filter(cat => +cat.categoryId === +id)[0])
         setCategory(filterCategories.filter(cat => +cat.categoryId === +id)[0])
-
+        setMethod('PATCH')
+        console.log(method)
     }
 
     const handleSubmit = async e => {
-        e.preventDefault();
+        try {
+            e.preventDefault();
+            const formData = extractFromData({ ...e.target.elements })
+            console.log(formData)
+
+            console.log('$$$$$$$$$$$$$$$$$$$$$$$', method)
+            let response
+            if (method === 'POST') response = await client.post('/category', formData)
+            if (method === 'PATCH') response = await client.patch('/category', formData)
+            console.log(response.data)
+
+            setCategories([...categories, formData])
+        } catch (error) {
+            console.log(error)
+        }
 
     }
 
@@ -76,7 +99,9 @@ export const Categories = () => {
                 <form onSubmit={handleSubmit} className="form">
                     <label htmlFor="route" className="label">
                         Category ID:
-                    <input className="input" type="text" name="categoryId"
+                        <input className="input" type="text" name="categoryId"
+                            value={category.categoryId} onChange={handleChange} disabled />
+                        <input className="input" type="hidden" name="categoryId"
                             value={category.categoryId} onChange={handleChange} disabled />
                     </label>
 
@@ -96,6 +121,12 @@ export const Categories = () => {
                         Route:
                         <input className="input" type="text" name="route"
                             value={category.route} onChange={handleChange} />
+                    </label>
+
+                    <label htmlFor="active" className="label">
+                        Active:
+                        <input className="input" type="text" name="active"
+                            value={category.active} onChange={handleChange} />
                     </label>
                     <button className="submit-btn" type="submit">Update</button>
                 </form>

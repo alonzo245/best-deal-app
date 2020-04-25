@@ -16,7 +16,7 @@ export const Layout = () => {
 
 
     return (
-        <Router basename="/admin">
+        <Router>
             <Header />
                 <Switch>
                     <Route exact path={"/"} component={Main} />

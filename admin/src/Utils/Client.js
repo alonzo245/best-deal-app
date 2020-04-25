@@ -1,11 +1,11 @@
 import axios from 'axios'
-
+const host = '//localhost'
 export const client = axios.create({
-  baseURL: '/api-v1/',
+  baseURL: host+'/api-v1',
 });
 
 export const authClient = axios.create({
-  baseURL: '/auth/',
+  baseURL: host+'/auth/',
 });
 
 export const authHeaders = user => {

@@ -6,16 +6,21 @@ const injects = ({ logger, cache }) => ({
      */
     getCategories: async (req, res, next) => {
         try {
-            const cached = await cache.getAsync('categories')
-            // const cacheValue = await cache.keysAsync('categories')
-            if (cached) {
-                return res.status(200).json({ categories: JSON.parse(cached) })
+            if (process.env.NODE_ENV === 'production') {
+                const cached = await cache.getAsync('categories')
+                // const cacheValue = await cache.keysAsync('categories')
+                if (cached) {
+                    return res.status(200).json({ categories: JSON.parse(cached) })
+                }
             }
 
             const categories = await Category.find()
             if (!categories) return res.status(200).json({ categories })
 
-            await cache.setAsync('categories', JSON.stringify(categories))
+            if (process.env.NODE_ENV === 'production') {
+                await cache.setAsync('categories', JSON.stringify(categories))
+            }
+
             return res.status(200).json({ categories })
 
         } catch (error) {
@@ -28,9 +33,11 @@ const injects = ({ logger, cache }) => ({
     /**
      * create category
      */
-    createCategory: (req, res, next) => {
+    createCategory: async (req, res, next) => {
+        const count = await Category.countDocuments()
         const category = new Category({
-            ...req.body
+            ...req.body,
+            categoryId: (+count) + 1
         })
 
         category.save()
@@ -46,21 +53,27 @@ const injects = ({ logger, cache }) => ({
     /**
      * update category
      */
-    updateCategory: (req, res, next) => {
-        Category.findById(req.params.id)
-            .then(category => {
-                category.icon = req.body.icon
-                category.name = req.body.name
-                category.route = req.body.route
-                return category.save();
-            })
-            .then(() => {
-                res.status(200).json({ massage: 'category updated' })
-            })
-            .catch(err => {
-                if (!err.statusCode) err.statusCode = 500;
-                next(err)
-            });
+    updateCategory: async (req, res, next) => {
+        try {
+            console.log('*******************************************', req.body)
+            const update = {
+                icon: req.body.icon,
+                name: req.body.name,
+                route: req.body.route,
+                active: req.body.active,
+            }
+
+            const category = await Category.findOneAndUpdate({ categoryId: req.body.categoryId }, update)
+            if (!category) return res.status(400).json({})
+
+            const updated = await category.save()
+            if (!updated) return res.status(400).json({})
+
+            res.status(200).json({ massage: 'category updated' })
+
+        } catch (error) {
+            console.log(error)
+        }
     },
 
     /**

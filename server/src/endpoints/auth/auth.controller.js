@@ -17,7 +17,7 @@ function generateAccessToken(user) {
 
 const injects = ({ logger, mailer }) => ({
     deleteAll: async (req, res) => {
-        if (process.env.NODE_ENV !== 'development') return res.status(403).json({})
+        if (process.env.NODE_ENV === 'production') return res.status(403).json({})
         await Customer.remove({})
         await RefreshToken.remove({})
         return res.status(200).json({ message: 'success' })

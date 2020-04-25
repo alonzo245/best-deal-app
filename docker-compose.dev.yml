@@ -103,10 +103,10 @@ services:
       - ./admin/src:/app/admin/src
     # command: npm run start
     # restart: always
-    links:
-      - server_api
+    # links:
+    #   - server_api
     depends_on: 
-      - server_api
+      # - server_api
       - db
     networks:    
       - shoppingstorenetwork
