@@ -16,19 +16,19 @@ server/server.key
 server/public/uploads/*
 
 #admin client
-admin-client/node_modules
-admin-client/build
-admin-client/.pnp
-admin-client.pnp.js
-admin-client/coverage
-admin-client/.DS_Store
-admin-client/.env.local
-admin-client/.env.development.local
-admin-client/.env.test.local
-admin-client/.env.production.local
-admin-client/npm-debug.log*
-admin-client/yarn-debug.log*
-admin-client/yarn-error.log*
+admin/node_modules
+admin/build
+admin/.pnp
+admin.pnp.js
+admin/coverage
+admin/.DS_Store
+admin/.env.local
+admin/.env.development.local
+admin/.env.test.local
+admin/.env.production.local
+admin/npm-debug.log*
+admin/yarn-debug.log*
+admin/yarn-error.log*
 
 #client
 client/node_modules
