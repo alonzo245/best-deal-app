@@ -10,10 +10,12 @@ const injects = ({ logger, validateResult }) => ({
             .trim()
             .escape()
             .isString()
+            .not().isEmpty()
             .withMessage('Category active field not valid'),
         check('icon')
             .trim()
             .escape()
+            .not().isEmpty()
             .isString()
             .withMessage('Category icon field not valid'),
         check('name')
@@ -24,6 +26,7 @@ const injects = ({ logger, validateResult }) => ({
         check('route')
             .trim()
             .escape()
+            .not().isEmpty()
             .isString()
             .withMessage('Category route field not valid'),
         (req, res, next) => validateResult(req, res, next, logger)
@@ -41,16 +44,19 @@ const injects = ({ logger, validateResult }) => ({
         check('icon')
             .trim()
             .escape()
+            .not().isEmpty()
             .isString()
             .withMessage('Category icon field not valid'),
         check('name')
             .trim()
             .escape()
+            .not().isEmpty()
             .isString()
             .withMessage('Category name field not valid'),
         check('route')
             .trim()
             .escape()
+            .not().isEmpty()
             .isString()
             .withMessage('Category route field not valid'),
         (req, res, next) => validateResult(req, res, next, logger)
@@ -60,13 +66,12 @@ const injects = ({ logger, validateResult }) => ({
      * deleteCategory
      */
     deleteCategory: [
-        check('email')
-            .not().isEmpty()
-            .isEmail()
+        check('id')
             .trim()
             .escape()
-            .normalizeEmail()
-            .withMessage('Email not valid'),
+            .not().isEmpty()
+            .isString()
+            .withMessage('id not valid'),
         (req, res, next) => validateResult(req, res, next, logger)
     ],
 

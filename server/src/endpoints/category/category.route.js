@@ -9,6 +9,6 @@ const injects = ({ logger, controller, validator, utils, middlewares }) => {
         .get('/', categoryCtrl.getCategories)
         .post('/', validate.createCategory, categoryCtrl.createCategory)
         .patch('/', validate.updateCategory, categoryCtrl.updateCategory)
-        // .delete('/', validate.deleteCategory, categoryCtrl.deleteCategory)
+        .delete('/:id', validate.deleteCategory, categoryCtrl.deleteCategory)
 }
 module.exports = { injects }

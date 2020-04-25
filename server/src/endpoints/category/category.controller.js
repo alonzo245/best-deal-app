@@ -37,7 +37,7 @@ const injects = ({ logger, cache }) => ({
         const count = await Category.countDocuments()
         const category = new Category({
             ...req.body,
-            categoryId: (+count) + 1
+            categoryId: `${(count-1) + 1}`
         })
 
         category.save()
@@ -79,16 +79,16 @@ const injects = ({ logger, cache }) => ({
     /**
      * delete category
      */
-    deleteCategory: (req, res, next) => {
-        Category.findByIdAndRemove(req.params.id)
-            .exec()
-            .then(() => {
-                res.status(200).json({ massage: 'category deleted' })
-            })
-            .catch(err => {
-                if (!err.statusCode) err.statusCode = 500;
-                next(err)
-            });
+    deleteCategory: async (req, res, next) => {
+        try {
+            const category = await Category.findOneAndRemove({ categoryId: req.params.id })
+            if (!category) return res.status(400).json({})
+
+            res.status(200).json({ massage: 'category deleted' })
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 })

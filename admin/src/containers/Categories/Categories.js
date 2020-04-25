@@ -7,7 +7,7 @@ import { extractFromData } from '../../Utils/Utils'
 
 
 export const Categories = () => {
-    const [method, setMethod] = useState('PATCH')
+    const [method, setMethod] = useState('POST')
 
     const [categories, setCategories] = useState(null)
     const [category, setCategory] = useState({
@@ -39,6 +39,22 @@ export const Categories = () => {
         })
 
     }
+
+    const handleRemoveCategory = async (categoryId) => {
+        try {
+            await client.delete(`/category/${categoryId}`)
+            setCategories([...categories.filter(category => category.categoryId !== categoryId)])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // const handleChange = async e => {
+    //     setCategory({
+    //         ...category,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
     const handleAdd = async e => {
         setCategory({
@@ -72,7 +88,16 @@ export const Categories = () => {
             if (method === 'PATCH') response = await client.patch('/category', formData)
             console.log(response.data)
 
-            setCategories([...categories, formData])
+            if (method === 'POST') setCategories([...categories, formData])
+            if (method === 'PATCH') {
+                const updatedList = categories.map(category => {
+                    if (category.categoryId === formData.categoryId) {
+                        return { ...formData }
+                    }
+                    return category
+                })
+                setCategories(updatedList)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -89,7 +114,10 @@ export const Categories = () => {
                     <li className="addCategory" onClick={handleAdd}>Add Category</li>
                     {categories.map((category, i) => {
                         return (
-                            <li key={i} onClick={() => handleEdit(category.categoryId)}>{category.name}</li>
+                            <li key={i} onClick={() => handleEdit(category.categoryId)}>
+                                {category.name}
+                                <div className="removeItem" onClick={()=>handleRemoveCategory(category.categoryId)}>Remove</div>
+                            </li>
                         )
                     })}
                 </ul>

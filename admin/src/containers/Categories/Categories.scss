@@ -29,11 +29,21 @@
                 cursor: pointer;
                 font-size: 0.7rem;
                 background-color: #444;
-                margin-bottom: 5px;
+                margin-bottom: 2px;
                 padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
 
                 &:hover {
                     background-color: #222;
+                }
+
+                & > .removeItem{
+                    font-size: 0.6rem;
+                    display: block;
+                    padding: 5px;
+                    background-color: #333;
                 }
             }
         }
